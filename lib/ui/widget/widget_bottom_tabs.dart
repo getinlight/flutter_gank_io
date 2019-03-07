@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gank_io/ui/widget/icon_font.dart';
+import 'package:flutter_gank_io/ui/widget/widget_icon_font.dart';
 import 'package:flutter_gank_io/common/utils/common_utils.dart';
 
 class BottomTabsWidget extends StatefulWidget {

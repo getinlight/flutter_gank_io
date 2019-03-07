@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_gank_io/common/net/http_response.dart';
-import 'package:flutter_gank_io/common/manager/cache_manager.dart';
+import 'package:flutter_gank_io/common/manager/manager_cache.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_gank_io/config/app_config.dart';
 import 'package:flutter_gank_io/common/net/http_code.dart';

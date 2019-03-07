@@ -1,4 +1,4 @@
-import 'package:flutter_gank_io/common/model/User.dart';
+import 'package:flutter_gank_io/common/model/model_user.dart';
 import 'package:redux/redux.dart';
 
 final combineUserReducer = combineReducers<User>([

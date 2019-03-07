@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:flutter_gank_io/api/gank_api.dart';
-import 'package:flutter_gank_io/common/model/gank_item.dart';
-import 'package:flutter_gank_io/common/model/gank_post.dart';
-import 'package:flutter_gank_io/ui/widget/indicator_factory.dart';
+import 'package:flutter_gank_io/api/api_gank.dart';
+import 'package:flutter_gank_io/common/model/model_gank_item.dart';
+import 'package:flutter_gank_io/common/model/model_gank_post.dart';
+import 'package:flutter_gank_io/ui/widget/widget_indicator_factory.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_gank_io/ui/widget/gank_item_title.dart';
-import 'package:flutter_gank_io/ui/widget/gank_list_item.dart';
+import 'package:flutter_gank_io/ui/widget/widget_gank_item_title.dart';
+import 'package:flutter_gank_io/ui/widget/widget_gank_list_item.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_gank_io/common/event/event_refresh_new_page.dart';
+import 'package:flutter_gank_io/common/manager/manager_app.dart';
+import 'package:flutter_gank_io/ui/page/page_gallery.dart';
 
 class NewPage extends StatefulWidget {
   @override
@@ -25,6 +29,13 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
+    AppManager.eventBus.on<RefreshNewPageEvent>().listen((event){
+      if (mounted) {
+        _date = event.date;
+        getNewData(date: _date);
+      }
+    });
+    _refreshController = new RefreshController();
     getNewData();
   }
 
@@ -44,6 +55,12 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
             child: _buildListView(),
           ),
         ),
+        Offstage(
+          offstage: _isLoading ? false : true,
+          child: Center(
+            child: CupertinoActivityIndicator(),
+          ),
+        )
       ],
     );
   }
@@ -53,7 +70,7 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
       itemCount: _gankItems == null ? 0 : _gankItems.length + 1,
       itemBuilder: (context, i) {
         if (i == 0) {
-          return _buildimageBanner(context);
+          return _buildImageBanner(context);
         } else {
           GankItem gankItem = _gankItems[i - 1];
           return gankItem.isTitle
@@ -64,12 +81,12 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  GestureDetector _buildimageBanner(BuildContext context) {
+  GestureDetector _buildImageBanner(BuildContext context) {
     return GestureDetector(
       onTap: () {
-//        Navigator.of(context).push(MaterialPageRoute(builder: (context){
-//          return
-//        }));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context){
+          return GalleryPage([_girlImage], '');
+        }));
       },
       child: CachedNetworkImage(
         width: MediaQuery.of(context).size.width,

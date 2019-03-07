@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:flutter_gank_io/common/model/User.dart';
+import 'package:flutter_gank_io/common/model/model_user.dart';
 import 'package:flutter_gank_io/config/app_config.dart';
 import 'package:flutter_gank_io/common/net/http_manager.dart';
-import 'package:flutter_gank_io/common/manager/user_manager.dart';
+import 'package:flutter_gank_io/common/manager/manager_user.dart';
 
 class GithubApi {
   static const List<String> GANK_OAUTH2_SCOPE = [

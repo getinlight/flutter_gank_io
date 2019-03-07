@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_gank_io/ui/page/home_page.dart';
-import 'package:flutter_gank_io/common/manager/app_manager.dart';
+import 'package:flutter_gank_io/ui/page/page_home.dart';
+import 'package:flutter_gank_io/common/manager/manager_app.dart';
 
 class SplashPage extends StatefulWidget {
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gank_io/redux/AppState.dart';
+import 'package:flutter_gank_io/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class GankLocalizationWrapper extends StatefulWidget {

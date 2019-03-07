@@ -1,5 +1,5 @@
-import 'package:flutter_gank_io/common/manager/app_manager.dart';
-import 'package:flutter_gank_io/common/event/http_error_event.dart';
+import 'package:flutter_gank_io/common/manager/manager_app.dart';
+import 'package:flutter_gank_io/common/event/event_http_error.dart';
 
 class HttpCode {
   ///网络错误

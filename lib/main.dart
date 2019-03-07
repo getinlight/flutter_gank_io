@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_gank_io/redux/AppState.dart';
+import 'package:flutter_gank_io/redux/app_state.dart';
 import 'package:flutter_gank_io/common/constant/AppColors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gank_io/common/localization/GankLocalizationsDelegate.dart';
-import 'package:flutter_gank_io/ui/page/SplashPage.dart';
+import 'package:flutter_gank_io/ui/page/page_splash.dart';
 import 'package:flutter_gank_io/common/localization/GankLocalizationsWrapper.dart';
-import 'package:flutter_gank_io/ui/page/home_page.dart';
+import 'package:flutter_gank_io/ui/page/page_home.dart';
 
 void main() => runApp(MyApp());
 

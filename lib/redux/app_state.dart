@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gank_io/common/model/User.dart';
+import 'package:flutter_gank_io/common/model/model_user.dart';
 
-import 'package:flutter_gank_io/redux/UserReducer.dart';
-import 'package:flutter_gank_io/redux/ThemeDataReducer.dart';
-import 'package:flutter_gank_io/redux/LocaleReducer.dart';
+import 'package:flutter_gank_io/redux/reducer_user.dart';
+import 'package:flutter_gank_io/redux/reducer_theme_data.dart';
+import 'package:flutter_gank_io/redux/reducer_locale.dart';
 
 class AppState {
 

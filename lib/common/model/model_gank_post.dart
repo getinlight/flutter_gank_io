@@ -1,4 +1,4 @@
-import 'package:flutter_gank_io/common/model/gank_item.dart';
+import 'package:flutter_gank_io/common/model/model_gank_item.dart';
 
 class GankPost {
   List<String> category;
