@@ -28,7 +28,8 @@ class _GalleryPageState extends State<GalleryPage> {
       return PhotoViewGalleryPageOptions(
         imageProvider: CachedNetworkImageProvider(url),
         heroTag: url+tagIndex.toString(),
-        minScale: PhotoViewComputedScale.contained * 1,
+        initialScale: PhotoViewComputedScale.contained * 0.8,
+        minScale: PhotoViewComputedScale.contained * 0.8,
         maxScale: PhotoViewComputedScale.contained * 1.5,
       );
     }).toList();

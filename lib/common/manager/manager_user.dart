@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter_gank_io/common/model/model_user.dart';
 import 'package:flutter_gank_io/common/utils/SPUtils.dart';
 import 'package:flutter_gank_io/config/app_config.dart';
-import 'package:flutter_gank_io/api/api_github.dart';
 import 'package:redux/redux.dart';
 
 class UserManager {

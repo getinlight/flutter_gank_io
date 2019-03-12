@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_gank_io/common/model/model_gank_item.dart';
 import 'package:flutter_gank_io/common/utils/time_utils.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gank_io/ui/page/page_web_view.dart';
 import 'package:flutter_gank_io/ui/page/page_gallery.dart';
 

@@ -6,6 +6,10 @@ import 'package:flutter_gank_io/ui/widget/widget_bottom_tabs.dart';
 import 'package:flutter_gank_io/common/manager/manager_app.dart';
 import 'package:flutter_gank_io/common/event/event_refresh_new_page.dart';
 import 'package:flutter_gank_io/ui/widget/widget_icon_font.dart';
+import 'package:flutter_gank_io/ui/page/page_welfare.dart';
+import 'package:flutter_gank_io/ui/widget/widget_history_date.dart';
+import 'package:flutter_gank_io/api/api_gank.dart';
+import 'package:flutter_gank_io/common/event/event_show_history_date.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -20,12 +24,14 @@ class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
   String _currentDate;
   PageController _pageController;
+  List _historyData;
 
   @override
   void initState() {
     super.initState();
     _pageController = new PageController(initialPage: 0);
     _registerEventListener();
+    _getHistoryData();
   }
 
   void _registerEventListener() {
@@ -49,7 +55,7 @@ class _HomePageState extends State<HomePage> {
 
   void _pageChange(int index) {
     if (index != 0) {
-
+      AppManager.eventBus.fire(ShowHistoryDateEvent.hide());
     }
 
     setState(() {
@@ -76,7 +82,9 @@ class _HomePageState extends State<HomePage> {
     return IconButton(
       icon: Icon(getActionsIcon(), size: 22, color: Colors.white),
       onPressed: () async {
-
+        if (_currentPageIndex == 0) {
+          AppManager.notifyShowHistoryDateEvent();
+        }
       },
     );
   }
@@ -94,6 +102,15 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  ///获取干货历史发布日期
+  void _getHistoryData() async {
+    var historyData = await GankApi.getHistoryDateData();
+    setState(() {
+      _historyData = historyData;
+      _currentDate = '今日最新干货';
+    });
+  }
+
   Widget _buildBody() {
     return Stack(
       children: <Widget>[
@@ -103,8 +120,10 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             NewPage(),
             CategoryPage(),
+            WelfarePage(),
           ],
         ),
+        HistoryDateWidget(_historyData),
       ],
     );
   }

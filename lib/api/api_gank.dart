@@ -25,4 +25,17 @@ class GankApi {
     return response.data;
   }
 
+  ///获取分类数据 [category:分类, page: 页数, count:每页的个数]
+  static getCategoryData(String category, int page, {count = 20}) async {
+    String url = API_DATA + category + "/$count/$page";
+    HttpResponse response = await HttpManager.fetch(url);
+    return response.data;
+  }
+
+  ///获取所有的历史干货日期.
+  static getHistoryDateData() async {
+    HttpResponse response = await HttpManager.fetch(API_HISTORY);
+    return response.data['results'];
+  }
+
 }
