@@ -10,6 +10,7 @@ import 'package:flutter_gank_io/ui/page/page_welfare.dart';
 import 'package:flutter_gank_io/ui/widget/widget_history_date.dart';
 import 'package:flutter_gank_io/api/api_gank.dart';
 import 'package:flutter_gank_io/common/event/event_show_history_date.dart';
+import 'package:flutter_gank_io/ui/page/page_favorite.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -121,6 +122,7 @@ class _HomePageState extends State<HomePage> {
             NewPage(),
             CategoryPage(),
             WelfarePage(),
+            FavoritePage()
           ],
         ),
         HistoryDateWidget(_historyData),
