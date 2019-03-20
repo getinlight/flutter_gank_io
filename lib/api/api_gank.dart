@@ -38,4 +38,18 @@ class GankApi {
     return response.data['results'];
   }
 
+  ///搜索[简易搜索，后面拆分页]
+  static searchData(String search) async {
+    HttpResponse response = await HttpManager.fetch(
+        API_SEARCH + "/$search/category/all/count/50/page/1");
+    return response.data['results'];
+  }
+
+  ///获取所有的历史干货.
+  static getHistoryContentData(int page, {count = 20}) async {
+    HttpResponse response =
+    await HttpManager.fetch(API_HISTORY_CONTENT + '/$count/$page');
+    return response.data['results'];
+  }
+
 }

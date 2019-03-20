@@ -11,6 +11,10 @@ import 'package:flutter_gank_io/ui/widget/widget_history_date.dart';
 import 'package:flutter_gank_io/api/api_gank.dart';
 import 'package:flutter_gank_io/common/event/event_show_history_date.dart';
 import 'package:flutter_gank_io/ui/page/page_favorite.dart';
+import 'package:flutter_gank_io/common/utils/navigator_utils.dart';
+import 'package:flutter_gank_io/common/event/event_change_welfare_column.dart';
+import 'package:flutter_gank_io/common/manager/manager_favorite.dart';
+import 'package:flutter_gank_io/ui/widget/widget_gank_drawer.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -48,6 +52,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: GankDrawer(),
       appBar: _buildAppBar(),
       body: _buildBody(),
       bottomNavigationBar: BottomTabsWidget(_pageController, _pageChange),
@@ -81,17 +86,23 @@ class _HomePageState extends State<HomePage> {
   ///右侧按钮
   IconButton _buildActions() {
     return IconButton(
-      icon: Icon(getActionsIcon(), size: 22, color: Colors.white),
+      icon: Icon(_getActionsIcon(), size: 22, color: Colors.white),
       onPressed: () async {
         if (_currentPageIndex == 0) {
           AppManager.notifyShowHistoryDateEvent();
+        } else if (_currentPageIndex == 1) {
+          NavigatorUtils.goSearch(context);
+        } else if (_currentPageIndex == 2) {
+          AppManager.eventBus.fire(ChangeWelfareColumnEvent());
+        } else {
+//          FavoriteManager.
         }
       },
     );
   }
 
   ///获取标题栏右侧图标.
-  IconData getActionsIcon() {
+  IconData _getActionsIcon() {
     if (_currentPageIndex == 0) {
       return IconFont(0xe8a6);
     } else if (_currentPageIndex == 1) {

@@ -8,6 +8,9 @@ import 'package:flutter_gank_io/common/localization/GankLocalizationsDelegate.da
 import 'package:flutter_gank_io/ui/page/page_splash.dart';
 import 'package:flutter_gank_io/common/localization/GankLocalizationsWrapper.dart';
 import 'package:flutter_gank_io/ui/page/page_home.dart';
+import 'package:flutter_gank_io/ui/page/page_login.dart';
+import 'package:flutter_gank_io/ui/page/page_search.dart';
+import 'package:flutter_gank_io/ui/page/page_about.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,6 +54,9 @@ class _MyAppState extends State<MyApp> {
               SplashPage.ROUTER_NAME: (context)=>
                   GankLocalizationWrapper(child: SplashPage()),
               HomePage.ROUTER_NAME: (context)=> HomePage(),
+              LoginPage.ROUTER_NAME: (context)=>LoginPage(),
+              SearchPage.ROUTER_NAME: (context)=>SearchPage(),
+              AboutPage.ROUTER_NAME: (context)=>AboutPage(),
             },
           );
         },

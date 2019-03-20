@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gank_io/common/constant/locale/BaseString.dart';
 import 'package:flutter_gank_io/common/constant/AppColors.dart';
 import 'package:flutter_gank_io/common/localization/GankLocalizations.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gank_io/ui/widget/widget_expand_button.dart';
+import 'package:flutter_gank_io/common/manager/manager_app.dart';
 
 class CommonUtils {
 
@@ -25,5 +28,62 @@ class CommonUtils {
     ];
   }
 
+  static showToast(String msg) {
+    Fluttertoast.showToast(
+        msg: msg,
+        backgroundColor: Colors.black,
+        gravity: ToastGravity.CENTER,
+        textColor: Colors.white);
+  }
+
+  static showCommitOptionDialog(
+      BuildContext context,
+      List<String> commitMaps,
+      ValueChanged<int> onTap,
+      {width = 250.0,
+      height = 480.0,
+      List<Color> colorList})
+  {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child: Container(
+            width: width,
+            height: height,
+            padding: EdgeInsets.symmetric(horizontal: 6.0),
+            margin: EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(4.0)),
+            ),
+            child: ListView.builder(
+              itemCount: commitMaps.length,
+              itemBuilder: (context, index) {
+                return ExpandButton(
+                  maxLines: 2,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  fontSize: 14.0,
+                  color: colorList != null ? colorList[index]:Theme.of(context).primaryColor,
+                  text: commitMaps[index],
+                  textColor: Colors.white,
+                  onPress: () {
+                    Navigator.pop(context);
+                    onTap(index);
+                  },
+                );
+              },
+            ),
+          ),
+        );
+      }
+    );
+  }
+
+  static showThemeDialog(BuildContext context) {
+    CommonUtils.showCommitOptionDialog(context, CommonUtils.getLocale(context).themeColorList, (index) {
+//      AppManager.
+    });
+  }
 
 }
